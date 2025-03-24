@@ -1,27 +1,39 @@
-try:
-    print("1 - length\n2 - Temperature")
-    choise = int(input("Enter Your Choiase:")) # 1 =Length 2= Temperature
+import streamlit as st
 
-    # code for length
-    if choise == 1:
-        length = float(input("Enter Your lemgth in meter:"))
-        print("1 - kilometer \n2 - Feet")
-        # take choise as input
-        length_choise = int(input("Enter Your Choise:")) # 1 = Kilometer, 2 = meter
-        if length_choise == 1:
-            print(f"{length/1000} kilometer")
-        elif length_choise == 2:
-            print(f"{length * 3.28084} Feet")
-        else:
-            print('Invalid choise')
+st.markdown('<h2><b style="color:green">Unit Converter Assignment</b></h2>', unsafe_allow_html=True)
+st.markdown('<h1 style="color:blue">Devan Das Mehrani</h1>', unsafe_allow_html=True)
 
-    # code for temperature
-    elif choise == 2:
-        temp = float(input("Enter your temperature in celcius :"))
-        print(f"{(temp * 9/5) + 32} Farenheit")
+my_val = st.number_input("Enter value to convert", min_value=0.0, format="%0.3f")
 
-    else:
-        print('INVALID CHOISE')
+value = st.selectbox("Conversion from", ["Year", "Month", "Week", "Day", "Hour", "Minute","Second"])
+to = st.selectbox("Convert to", ["Year", "Month", "Week", "Day", "Hour", "Minute","Second"])
 
-except:
-    print('Please try again')        
+st.markdown(f"Converting from {my_val} {value} to {to}")
+
+btn = st.button("Convert")
+
+def Convertor(my_val, value, to):
+    conversion_factors = {
+        ("Year", "Month"): 12,
+        ("Month", "Year"): 1 / 12,
+        ("Year", "Week"): 52,
+        ("Week", "Year"): 1 / 52,
+        ("Year", "Day"): 360,
+        ("Day", "Year"): 1 / 360,
+        ("Month", "Week"): 4,
+        ("Week", "Month"): 1 / 4,
+        ("Month", "Day"): 30,
+        ("Day", "Month"): 1 / 30,
+        ("Week", "Day"): 7,
+        ("Day", "Week"): 1 / 7,
+        ("Day", "Hour"): 24,
+        ("Hour", "Day"): 1 / 24,
+        ("Hour", "Minute"): 60,
+        ("Minute", "Hour"): 1 / 60
+    }
+    
+    return my_val * conversion_factors.get((value, to), 1)
+
+if btn:
+    conv = Convertor(my_val, value, to)
+    st.success(f"Final result: {conv:.3f}")
