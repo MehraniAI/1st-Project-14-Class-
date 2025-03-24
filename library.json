@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Python",
+        "author": "Abdul Basit",
+        "year": 2022,
+        "genre": "Programming",
+        "read_status": true
+    },
+    {
+        "title": "xyz",
+        "author": "yxc",
+        "year": 2024,
+        "genre": "vfgg",
+        "read_status": false
+    }
+]
