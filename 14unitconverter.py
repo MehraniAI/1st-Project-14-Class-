@@ -5,8 +5,8 @@ st.markdown('<h1 style="color:blue">Devan Das Mehrani</h1>', unsafe_allow_html=T
 
 my_val = st.number_input("Enter value to convert", min_value=0.0, format="%0.3f")
 
-value = st.selectbox("Conversion from", ["Year", "Month", "Week", "Day", "Hour", "Minute","Second"])
-to = st.selectbox("Convert to", ["Year", "Month", "Week", "Day", "Hour", "Minute","Second"])
+value = st.selectbox("Conversion from", ["Year", "Month", "Week", "Day", "Hour", "Minute"])
+to = st.selectbox("Convert to", ["Year", "Month", "Week", "Day", "Hour", "Minute"])
 
 st.markdown(f"Converting from {my_val} {value} to {to}")
 
