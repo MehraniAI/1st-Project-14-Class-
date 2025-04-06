@@ -43,7 +43,7 @@ class ATM:
 
     def _record_transaction(self, type, amount):
         self.accounts[self.current_account]['transactions'].append({
-            'type': type, 'amount': amount, 'date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'type': type, 'amount': amount, 'date': st.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
             'balance': self.accounts[self.current_account]['balance']
         })
 
